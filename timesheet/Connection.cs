@@ -23,7 +23,6 @@ namespace timesheet
                 try
                 {
                     connectionObject.Open();
-                    //MessageBox.Show("Conectou");
                     return true;
                 }
                 catch
