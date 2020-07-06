@@ -39,5 +39,13 @@ namespace timesheet
             }
 
         }
+
+        private void textBox2_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                button1_Click(sender, null);
+            }
+        }
     }
 }
