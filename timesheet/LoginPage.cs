@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using timesheet.database;
 using timesheet.database.selectCollections;
 
 namespace timesheet
@@ -17,25 +18,28 @@ namespace timesheet
 
         public LoginPage()
         {
-            Connection newConnection = new Connection();
-            bool connected = newConnection.connectNow();
-            if (connected)
-            {
-                InitializeComponent();
-            }
+            InitializeComponent();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+
+            EmployeeBLL employeeRepository = new EmployeeBLL();
 
             if (textBox1.Text == "" || textBox2.Text == "")
             {
                 MessageBox.Show("O usuario e a senha devem ser informados.");
             } else
             {
-                EmployeeRepository employeeRepository = new EmployeeRepository();
-                string userToken = employeeRepository.authUser(textBox1.Text, textBox2.Text);
-                MessageBox.Show("Novo token: " + userToken);
+
+                EmployeeDTO newEmployee = new EmployeeDTO();
+                newEmployee.setUser(textBox1.Text);
+                newEmployee.setPassword(textBox2.Text);
+
+                employeeRepository.loginUser(newEmployee);
+
+                MessageBox.Show("Você logou!");
+
             }
 
         }

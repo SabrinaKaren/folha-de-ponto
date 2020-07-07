@@ -4,7 +4,7 @@ using System.Text;
 
 namespace timesheet.database
 {
-    class Employee
+    class EmployeeDTO
     {
 
         private int employee_id;
@@ -12,7 +12,7 @@ namespace timesheet.database
         private string user;
         private string password;
 
-        public Employee()
+        public EmployeeDTO()
         {
         }
 

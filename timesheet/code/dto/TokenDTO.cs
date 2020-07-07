@@ -4,7 +4,7 @@ using System.Text;
 
 namespace timesheet.database
 {
-    class Token
+    class TokenDTO
     {
 
         private int token_id;
@@ -13,7 +13,7 @@ namespace timesheet.database
         private DateTime begin;
         private DateTime validate;
 
-        public Token()
+        public TokenDTO()
         {
         }
 

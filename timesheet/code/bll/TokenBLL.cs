@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace timesheet.database.selectCollections
 {
-    public class TokenRepository
+    public class TokenBLL
     {
 
         
