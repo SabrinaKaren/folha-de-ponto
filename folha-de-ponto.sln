@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1169
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "folha-de-ponto", "folha-de-ponto\folha-de-ponto.csproj", "{AA7F39CF-EDB1-4E17-AFA2-D6D7E545FC7D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AA7F39CF-EDB1-4E17-AFA2-D6D7E545FC7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA7F39CF-EDB1-4E17-AFA2-D6D7E545FC7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA7F39CF-EDB1-4E17-AFA2-D6D7E545FC7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA7F39CF-EDB1-4E17-AFA2-D6D7E545FC7D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FEDC6CC1-0F2E-4B69-B9B1-7EE03B6905D4}
+	EndGlobalSection
+EndGlobal
