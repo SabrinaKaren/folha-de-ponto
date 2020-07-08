@@ -13,22 +13,27 @@ namespace timesheet.database.selectCollections
 
         DatabaseAccess db = new DatabaseAccess();
 
-        public void loginUser(EmployeeDTO employeeObject)
+        public DataTable loginUser(EmployeeDTO employeeObject)
         {
-            
+
+            DataTable sqlReturn = new DataTable();
+
+
             try
             {
                 
                 db.connect();
 
                 string sql = "SELECT * FROM employee WHERE user = '" + employeeObject.getUser() + "' AND password = '" + employeeObject.getPassword() + "'";
-                db.getDataTable(sql); //  verificar se possui retorno
+                sqlReturn = db.getDataTable(sql); //  verificar se possui retorno
 
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Erro ao realizar o login: " + ex.Message.ToString());
             }
+
+            return sqlReturn;
 
         }
 

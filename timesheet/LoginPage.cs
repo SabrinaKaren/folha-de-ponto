@@ -36,9 +36,16 @@ namespace timesheet
                 newEmployee.setUser(textBox1.Text);
                 newEmployee.setPassword(textBox2.Text);
 
-                employeeRepository.loginUser(newEmployee);
+                DataTable loginReturn = employeeRepository.loginUser(newEmployee);
+                DataRow[] rows = loginReturn.Select();
 
-                MessageBox.Show("Você logou!");
+                if (loginReturn.Select().Length > 0)
+                {
+                    MessageBox.Show("Você logou!");
+                } else
+                {
+                    MessageBox.Show("Usuário e/ou senha inválidos.");
+                }                
 
             }
 
