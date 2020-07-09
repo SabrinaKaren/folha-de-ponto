@@ -49,5 +49,13 @@ namespace folha_de_ponto
             }
 
         }
+
+        private void password_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                login_Click(sender, e);
+            }
+        }
     }
 }
