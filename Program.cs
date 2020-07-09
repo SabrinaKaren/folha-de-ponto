@@ -1,4 +1,5 @@
-﻿using System;
+﻿using folha_de_ponto.views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +17,7 @@ namespace folha_de_ponto
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoginPage());
+            Application.Run(new MainPage());
         }
     }
 }

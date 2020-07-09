@@ -153,3 +153,4 @@ C:\Projetos\Pessoal\folha-de-ponto\obj\Debug\folha-de-ponto.csproj.CoreCompileIn
 C:\Projetos\Pessoal\folha-de-ponto\obj\Debug\folha-de-ponto.csproj.CopyComplete
 C:\Projetos\Pessoal\folha-de-ponto\obj\Debug\folha-de-ponto.exe
 C:\Projetos\Pessoal\folha-de-ponto\obj\Debug\folha-de-ponto.pdb
+C:\Projetos\Pessoal\folha-de-ponto\obj\Debug\folha_de_ponto.views.MainPage.resources
