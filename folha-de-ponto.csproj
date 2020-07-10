@@ -104,12 +104,6 @@
     <Compile Include="views\HomePage.Designer.cs">
       <DependentUpon>HomePage.cs</DependentUpon>
     </Compile>
-    <Compile Include="views\LoginPage.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="views\LoginPage.Designer.cs">
-      <DependentUpon>LoginPage.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="views\MainPage.cs">
@@ -129,9 +123,6 @@
     </Compile>
     <EmbeddedResource Include="views\HomePage.resx">
       <DependentUpon>HomePage.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="views\LoginPage.resx">
-      <DependentUpon>LoginPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="views\MainPage.resx">
       <DependentUpon>MainPage.cs</DependentUpon>

@@ -147,7 +147,6 @@ C:\Projetos\Pessoal\folha-de-ponto\bin\Debug\System.Runtime.CompilerServices.Uns
 C:\Projetos\Pessoal\folha-de-ponto\obj\Debug\folha-de-ponto.csprojAssemblyReference.cache
 C:\Projetos\Pessoal\folha-de-ponto\obj\Debug\folha_de_ponto.Properties.Resources.resources
 C:\Projetos\Pessoal\folha-de-ponto\obj\Debug\folha_de_ponto.HomePage.resources
-C:\Projetos\Pessoal\folha-de-ponto\obj\Debug\folha_de_ponto.LoginPage.resources
 C:\Projetos\Pessoal\folha-de-ponto\obj\Debug\folha-de-ponto.csproj.GenerateResource.cache
 C:\Projetos\Pessoal\folha-de-ponto\obj\Debug\folha-de-ponto.csproj.CoreCompileInputs.cache
 C:\Projetos\Pessoal\folha-de-ponto\obj\Debug\folha-de-ponto.csproj.CopyComplete

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using timesheet.database;
 using timesheet.database.selectCollections;
+using folha_de_ponto.code.data;
 
 namespace folha_de_ponto.views
 {
@@ -16,6 +17,7 @@ namespace folha_de_ponto.views
     {
         private int childFormNumber = 0;
         private String token = "";
+        private DateTime tokenValidate;
 
         public MainPage()
         {
@@ -105,6 +107,7 @@ namespace folha_de_ponto.views
         {
 
             EmployeeBLL employeeRepository = new EmployeeBLL();
+            TokenBLL tokenRepository = new TokenBLL();
 
             if (user.Text == "" || password.Text == "")
             {
@@ -117,15 +120,23 @@ namespace folha_de_ponto.views
                 newEmployee.setUser(user.Text);
                 newEmployee.setPassword(password.Text);
 
-                DataTable loginReturn = employeeRepository.loginUser(newEmployee);
+                DataTable employeeLogged = employeeRepository.loginUser(newEmployee);
 
-                if (loginReturn.Select().Length > 0)
+                if (employeeLogged.Select().Length > 0)
                 {
-                    //MessageBox.Show("Você logou", "Entrando", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    //HomePage homePage = new HomePage();
-                    //homePage.Show();
-                    token = "asasas";
+                    // mensagem amigável com nome de usuário
+                    helloUser.Text = "Olá, " + employeeLogged.Rows[0].ItemArray[1].ToString();
+
+                    int employeeId = Convert.ToInt32(employeeLogged.Rows[0].ItemArray[0].ToString());
+                    TokenWithValidateData tokenObject = tokenRepository.generateToken(employeeId);
+
+                    // settando o token e a validade
+                    token = tokenObject.getToken();
+                    tokenValidate = tokenObject.getValidate();
+
+                    // retirando o painel de login da tela
                     panelLogin.Visible = false;
+
                 }
                 else
                 {

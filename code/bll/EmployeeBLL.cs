@@ -18,15 +18,11 @@ namespace timesheet.database.selectCollections
 
             DataTable sqlReturn = new DataTable();
 
-
             try
             {
-                
                 db.connect();
-
                 string sql = "SELECT * FROM employee WHERE user = '" + employeeObject.getUser() + "' AND password = '" + employeeObject.getPassword() + "'";
-                sqlReturn = db.getDataTable(sql); //  verificar se possui retorno
-
+                sqlReturn = db.getDataTable(sql);
             }
             catch (Exception ex)
             {
