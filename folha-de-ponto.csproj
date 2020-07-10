@@ -96,8 +96,10 @@
     <Compile Include="code\bll\EmployeeBLL.cs" />
     <Compile Include="code\bll\TokenBLL.cs" />
     <Compile Include="code\dal\DatabaseAccess.cs" />
+    <Compile Include="code\data\TokenWithValidateData.cs" />
     <Compile Include="code\dto\EmployeeDTO.cs" />
     <Compile Include="code\dto\TokenDTO.cs" />
+    <Compile Include="code\utils\CommonMethods.cs" />
     <Compile Include="views\HomePage.cs">
       <SubType>Form</SubType>
     </Compile>

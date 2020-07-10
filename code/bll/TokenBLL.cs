@@ -32,13 +32,16 @@ namespace timesheet.database.selectCollections
             }
 
             String newToken = commonMethods.generateRandomString(20);
-            DateTime begin = new DateTime();
-            DateTime validate = begin.AddHours(8);
+
+            String beginString = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            DateTime beginDateTime = DateTime.Parse(beginString);
+
+            DateTime validate = beginDateTime.AddHours(8);
 
             TokenDTO newTokenObj = new TokenDTO();
             newTokenObj.setTokenEmployeeId(employeeId);
             newTokenObj.setToken(newToken);
-            newTokenObj.setBegin(begin);
+            newTokenObj.setBegin(beginDateTime);
             newTokenObj.setValidate(validate);
 
             if (sqlReturn.Select().Length > 0)
@@ -81,7 +84,7 @@ namespace timesheet.database.selectCollections
             try
             {
                 db.connect();
-                string sql = "UPDATE token SET token = '" + tokenObj.getToken() + "', begin = '" + tokenObj.getBegin() + "', validate = '" + tokenObj.getValidate() + "' WHERE token_id = '" + tokenObj.getTokenId() + "');";
+                string sql = "UPDATE token SET token = '" + tokenObj.getToken() + "', begin = '" + tokenObj.getBegin() + "', validate = '" + tokenObj.getValidate() + "' WHERE token_id = '" + tokenObj.getTokenId() + "';";
                 db.executeSql(sql);
             }
             catch (Exception ex)

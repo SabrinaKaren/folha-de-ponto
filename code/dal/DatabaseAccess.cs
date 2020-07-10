@@ -12,7 +12,7 @@ namespace timesheet
         private MySqlConnection connection;
         private DataTable dataTable;
         private MySqlDataAdapter dataAdapter;
-        private MySqlDataReader dataReader;
+        //private MySqlDataReader dataReader;
         private MySqlCommandBuilder commandBuilder;
 
         private String server = "localhost";

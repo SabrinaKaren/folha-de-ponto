@@ -137,6 +137,9 @@ namespace folha_de_ponto.views
                     // retirando o painel de login da tela
                     panelLogin.Visible = false;
 
+                    // habilitando o próximo painel (de ponto)
+                    panelTimesheet.Visible = true;
+
                 }
                 else
                 {
