@@ -13,12 +13,12 @@ namespace timesheet.database.selectCollections
     {
 
         DatabaseAccess db = new DatabaseAccess();
+        CommonMethods commonMethods = new CommonMethods();
 
         public TokenWithValidateData generateToken(int employeeId)
         {
 
             DataTable sqlReturn = new DataTable();
-            CommonMethods commonMethods = new CommonMethods();
 
             try
             {
@@ -33,16 +33,14 @@ namespace timesheet.database.selectCollections
 
             String newToken = commonMethods.generateRandomString(20);
 
-            String beginString = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-            DateTime beginDateTime = DateTime.Parse(beginString);
-
-            DateTime validate = beginDateTime.AddHours(8);
+            DateTime beginDateTime = DateTime.Now;
+            DateTime validateDateTime = beginDateTime.AddHours(8);
 
             TokenDTO newTokenObj = new TokenDTO();
             newTokenObj.setTokenEmployeeId(employeeId);
             newTokenObj.setToken(newToken);
             newTokenObj.setBegin(beginDateTime);
-            newTokenObj.setValidate(validate);
+            newTokenObj.setValidate(validateDateTime);
 
             if (sqlReturn.Select().Length > 0)
             {
@@ -56,7 +54,7 @@ namespace timesheet.database.selectCollections
                 this.insertToken(newTokenObj);
             }
 
-            TokenWithValidateData newTokenWithValidate = new TokenWithValidateData(newToken, validate);
+            TokenWithValidateData newTokenWithValidate = new TokenWithValidateData(newToken, validateDateTime);
 
             return newTokenWithValidate;
 
@@ -65,10 +63,13 @@ namespace timesheet.database.selectCollections
         public void insertToken(TokenDTO tokenObj)
         {
 
+            string beginDateTimeInString = commonMethods.convertDateTimeInDbFormatString(tokenObj.getBegin());
+            string validateDateTimeInString = commonMethods.convertDateTimeInDbFormatString(tokenObj.getValidate());
+
             try
             {
                 db.connect();
-                string sql = "INSERT INTO token (token_id, token_employee_id, token, begin, validate) VALUES (NULL, '" + tokenObj.getTokenEmployeeId() +  "', '" + tokenObj.getToken() + "', '" + tokenObj.getBegin() + "', '" + tokenObj.getValidate() + "');";
+                string sql = "INSERT INTO token (token_id, token_employee_id, token, begin, validate) VALUES (NULL, '" + tokenObj.getTokenEmployeeId() +  "', '" + tokenObj.getToken() + "', '" + beginDateTimeInString + "', '" + validateDateTimeInString + "');";
                 db.executeSql(sql);
             }
             catch (Exception ex)
@@ -81,10 +82,13 @@ namespace timesheet.database.selectCollections
         public void updateToken(TokenDTO tokenObj)
         {
 
+            string beginDateTimeInString = commonMethods.convertDateTimeInDbFormatString(tokenObj.getBegin());
+            string validateDateTimeInString = commonMethods.convertDateTimeInDbFormatString(tokenObj.getValidate());
+
             try
             {
                 db.connect();
-                string sql = "UPDATE token SET token = '" + tokenObj.getToken() + "', begin = '" + tokenObj.getBegin() + "', validate = '" + tokenObj.getValidate() + "' WHERE token_id = '" + tokenObj.getTokenId() + "';";
+                string sql = "UPDATE token SET token = '" + tokenObj.getToken() + "', begin = '" + beginDateTimeInString + "', validate = '" + validateDateTimeInString + "' WHERE token_id = '" + tokenObj.getTokenId() + "';";
                 db.executeSql(sql);
             }
             catch (Exception ex)

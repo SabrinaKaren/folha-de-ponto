@@ -29,5 +29,10 @@ namespace folha_de_ponto.code.utils
 
         }
 
+        public string convertDateTimeInDbFormatString(DateTime brazilDateTime)
+        {
+            return String.Format("{0:yyyy-MM-dd HH:mm:ss}", brazilDateTime);
+        }
+
     }
 }
