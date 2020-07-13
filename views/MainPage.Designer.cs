@@ -107,10 +107,10 @@
             this.panelLogin.Controls.Add(this.user);
             this.panelLogin.Controls.Add(this.labelSenha);
             this.panelLogin.Controls.Add(this.labelUsuario);
-            this.panelLogin.Location = new System.Drawing.Point(0, 40);
+            this.panelLogin.Location = new System.Drawing.Point(0, 39);
             this.panelLogin.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panelLogin.Name = "panelLogin";
-            this.panelLogin.Size = new System.Drawing.Size(948, 618);
+            this.panelLogin.Size = new System.Drawing.Size(948, 624);
             this.panelLogin.TabIndex = 4;
             this.panelLogin.Visible = false;
             // 
@@ -177,10 +177,10 @@
             this.panelTimesheet.Controls.Add(this.groupPoint);
             this.panelTimesheet.Controls.Add(this.labelFolhaPonto);
             this.panelTimesheet.Controls.Add(this.timesheetTable);
-            this.panelTimesheet.Location = new System.Drawing.Point(0, 39);
+            this.panelTimesheet.Location = new System.Drawing.Point(0, 38);
             this.panelTimesheet.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panelTimesheet.Name = "panelTimesheet";
-            this.panelTimesheet.Size = new System.Drawing.Size(948, 618);
+            this.panelTimesheet.Size = new System.Drawing.Size(948, 624);
             this.panelTimesheet.TabIndex = 6;
             this.panelTimesheet.Visible = false;
             // 
