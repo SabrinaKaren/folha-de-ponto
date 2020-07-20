@@ -10,11 +10,14 @@ using System.Windows.Forms;
 using timesheet.database;
 using timesheet.database.selectCollections;
 using folha_de_ponto.code.data;
+using folha_de_ponto.code.utils;
+using folha_de_ponto.code.bll;
 
 namespace folha_de_ponto.views
 {
     public partial class MainPage : Form
     {
+
         private int childFormNumber = 0;
         private String token = "";
         private DateTime tokenValidate;
@@ -139,6 +142,7 @@ namespace folha_de_ponto.views
 
                     // habilitando o próximo painel (de ponto)
                     panelTimesheet.Visible = true;
+                    this.panelTimesheetController();
 
                 }
                 else
@@ -157,5 +161,31 @@ namespace folha_de_ponto.views
                 login_Click(sender, e);
             }
         }
+
+        private void panelTimesheetController()
+        {
+
+            // carregar tabela de pontos já realizados hoje
+            this.buildTimesheetTable();
+
+        }
+
+        private void buildTimesheetTable()
+        {
+
+            CommonMethods commonMethods = new CommonMethods();
+            TimesheetBLL timesheetRepository = new TimesheetBLL();
+
+            if (!commonMethods.tokenIsValidate(token, tokenValidate))
+            {
+                panelTimesheet.Visible = false;
+                panelLogin.Visible = true;                
+            } else
+            {
+                timesheetTable.DataSource = timesheetRepository.getEmployeeTimesheetOfTodayByToken(token);
+            }
+
+        }
+
     }
 }

@@ -94,12 +94,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="code\bll\EmployeeBLL.cs" />
+    <Compile Include="code\bll\TimesheetBLL.cs" />
     <Compile Include="code\bll\TokenBLL.cs" />
     <Compile Include="code\dal\DatabaseAccess.cs" />
     <Compile Include="code\data\TokenWithValidateData.cs" />
     <Compile Include="code\dto\EmployeeDTO.cs" />
     <Compile Include="code\dto\TokenDTO.cs" />
     <Compile Include="code\utils\CommonMethods.cs" />
+    <Compile Include="code\utils\Constants.cs" />
     <Compile Include="views\HomePage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -130,6 +132,7 @@
       <DependentUpon>MainPage.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\folha_de_ponto.code.utils.CommonMethods.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

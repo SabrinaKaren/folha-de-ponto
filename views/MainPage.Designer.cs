@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainPage));
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.windowsMenu = new System.Windows.Forms.ToolStripMenuItem();
@@ -42,18 +43,23 @@
             this.labelSenha = new System.Windows.Forms.Label();
             this.labelUsuario = new System.Windows.Forms.Label();
             this.panelTimesheet = new System.Windows.Forms.Panel();
+            this.timesheetTable = new System.Windows.Forms.DataGridView();
             this.groupPoint = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
             this.labelPointTime = new System.Windows.Forms.Label();
             this.comboBoxPointType = new System.Windows.Forms.ComboBox();
             this.labelFolhaPonto = new System.Windows.Forms.Label();
-            this.timesheetTable = new System.Windows.Forms.TableLayoutPanel();
+            this.commonMethodsBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.commonMethodsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.panelLogin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panelTimesheet.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.timesheetTable)).BeginInit();
             this.groupPoint.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.commonMethodsBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.commonMethodsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip
@@ -174,9 +180,9 @@
             // 
             // panelTimesheet
             // 
+            this.panelTimesheet.Controls.Add(this.timesheetTable);
             this.panelTimesheet.Controls.Add(this.groupPoint);
             this.panelTimesheet.Controls.Add(this.labelFolhaPonto);
-            this.panelTimesheet.Controls.Add(this.timesheetTable);
             this.panelTimesheet.Location = new System.Drawing.Point(0, 38);
             this.panelTimesheet.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panelTimesheet.Name = "panelTimesheet";
@@ -184,15 +190,24 @@
             this.panelTimesheet.TabIndex = 6;
             this.panelTimesheet.Visible = false;
             // 
+            // timesheetTable
+            // 
+            this.timesheetTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.timesheetTable.Location = new System.Drawing.Point(388, 81);
+            this.timesheetTable.Name = "timesheetTable";
+            this.timesheetTable.RowTemplate.Height = 28;
+            this.timesheetTable.Size = new System.Drawing.Size(545, 287);
+            this.timesheetTable.TabIndex = 4;
+            // 
             // groupPoint
             // 
             this.groupPoint.Controls.Add(this.button1);
             this.groupPoint.Controls.Add(this.labelPointTime);
             this.groupPoint.Controls.Add(this.comboBoxPointType);
             this.groupPoint.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupPoint.Location = new System.Drawing.Point(72, 75);
+            this.groupPoint.Location = new System.Drawing.Point(32, 54);
             this.groupPoint.Name = "groupPoint";
-            this.groupPoint.Size = new System.Drawing.Size(410, 330);
+            this.groupPoint.Size = new System.Drawing.Size(330, 263);
             this.groupPoint.TabIndex = 3;
             this.groupPoint.TabStop = false;
             this.groupPoint.Text = "Bater ponto";
@@ -201,7 +216,7 @@
             // 
             this.button1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.button1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.button1.Location = new System.Drawing.Point(148, 211);
+            this.button1.Location = new System.Drawing.Point(92, 193);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(105, 40);
             this.button1.TabIndex = 2;
@@ -211,7 +226,7 @@
             // labelPointTime
             // 
             this.labelPointTime.AutoSize = true;
-            this.labelPointTime.Location = new System.Drawing.Point(31, 61);
+            this.labelPointTime.Location = new System.Drawing.Point(18, 70);
             this.labelPointTime.Name = "labelPointTime";
             this.labelPointTime.Size = new System.Drawing.Size(55, 25);
             this.labelPointTime.TabIndex = 1;
@@ -221,41 +236,34 @@
             // 
             this.comboBoxPointType.FormattingEnabled = true;
             this.comboBoxPointType.Items.AddRange(new object[] {
-            "Início de expediente",
-            "Fim de expediente",
-            "Início de almoço",
-            "Fim de almoço",
-            "Início de pause",
-            "Fim de pausa"});
-            this.comboBoxPointType.Location = new System.Drawing.Point(36, 99);
+            "inicio expediente",
+            "fim expediente",
+            "inicio almoco",
+            "fim almoco",
+            "inicio pausa",
+            "fim pausa"});
+            this.comboBoxPointType.Location = new System.Drawing.Point(23, 116);
             this.comboBoxPointType.Name = "comboBoxPointType";
-            this.comboBoxPointType.Size = new System.Drawing.Size(337, 33);
+            this.comboBoxPointType.Size = new System.Drawing.Size(275, 33);
             this.comboBoxPointType.TabIndex = 0;
             // 
             // labelFolhaPonto
             // 
             this.labelFolhaPonto.AutoSize = true;
             this.labelFolhaPonto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelFolhaPonto.Location = new System.Drawing.Point(620, 75);
+            this.labelFolhaPonto.Location = new System.Drawing.Point(517, 37);
             this.labelFolhaPonto.Name = "labelFolhaPonto";
             this.labelFolhaPonto.Size = new System.Drawing.Size(262, 29);
             this.labelFolhaPonto.TabIndex = 2;
             this.labelFolhaPonto.Text = "Folha de ponto de hoje";
             // 
-            // timesheetTable
+            // commonMethodsBindingSource1
             // 
-            this.timesheetTable.ColumnCount = 2;
-            this.timesheetTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.timesheetTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.timesheetTable.Location = new System.Drawing.Point(650, 136);
-            this.timesheetTable.Name = "timesheetTable";
-            this.timesheetTable.RowCount = 4;
-            this.timesheetTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.timesheetTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.timesheetTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.timesheetTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.timesheetTable.Size = new System.Drawing.Size(200, 100);
-            this.timesheetTable.TabIndex = 1;
+            this.commonMethodsBindingSource1.DataSource = typeof(folha_de_ponto.code.utils.CommonMethods);
+            // 
+            // commonMethodsBindingSource
+            // 
+            this.commonMethodsBindingSource.DataSource = typeof(folha_de_ponto.code.utils.CommonMethods);
             // 
             // MainPage
             // 
@@ -281,8 +289,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panelTimesheet.ResumeLayout(false);
             this.panelTimesheet.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.timesheetTable)).EndInit();
             this.groupPoint.ResumeLayout(false);
             this.groupPoint.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.commonMethodsBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.commonMethodsBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -308,7 +319,9 @@
         private System.Windows.Forms.Label labelPointTime;
         private System.Windows.Forms.ComboBox comboBoxPointType;
         private System.Windows.Forms.Label labelFolhaPonto;
-        private System.Windows.Forms.TableLayoutPanel timesheetTable;
+        private System.Windows.Forms.BindingSource commonMethodsBindingSource;
+        private System.Windows.Forms.BindingSource commonMethodsBindingSource1;
+        private System.Windows.Forms.DataGridView timesheetTable;
     }
 }
 

@@ -34,5 +34,24 @@ namespace folha_de_ponto.code.utils
             return String.Format("{0:yyyy-MM-dd HH:mm:ss}", brazilDateTime);
         }
 
+        public Boolean tokenIsValidate(String token, DateTime tokenValidate)
+        {
+
+            if (token == null || "".Equals(token) || tokenValidate == null)
+            {
+                return false;
+            }
+
+            DateTime now = DateTime.Now;
+
+            if (now.CompareTo(tokenValidate) > 0)
+            {
+                return false;
+            }
+
+            return true;
+
+        }
+
     }
 }
