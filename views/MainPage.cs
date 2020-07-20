@@ -12,6 +12,7 @@ using timesheet.database.selectCollections;
 using folha_de_ponto.code.data;
 using folha_de_ponto.code.utils;
 using folha_de_ponto.code.bll;
+using folha_de_ponto.code.dto;
 
 namespace folha_de_ponto.views
 {
@@ -21,6 +22,12 @@ namespace folha_de_ponto.views
         private int childFormNumber = 0;
         private String token = "";
         private DateTime tokenValidate;
+        private int employeeId = 0;
+
+        EmployeeBLL employeeRepository = new EmployeeBLL();
+        TokenBLL tokenRepository = new TokenBLL();
+        CommonMethods commonMethods = new CommonMethods();
+        TimesheetBLL timesheetRepository = new TimesheetBLL();
 
         public MainPage()
         {
@@ -109,9 +116,6 @@ namespace folha_de_ponto.views
         private void login_Click(object sender, EventArgs e)
         {
 
-            EmployeeBLL employeeRepository = new EmployeeBLL();
-            TokenBLL tokenRepository = new TokenBLL();
-
             if (user.Text == "" || password.Text == "")
             {
                 MessageBox.Show("O usuario e a senha devem ser informados.");
@@ -130,7 +134,7 @@ namespace folha_de_ponto.views
                     // mensagem amigável com nome de usuário
                     helloUser.Text = "Olá, " + employeeLogged.Rows[0].ItemArray[1].ToString();
 
-                    int employeeId = Convert.ToInt32(employeeLogged.Rows[0].ItemArray[0].ToString());
+                    employeeId = Convert.ToInt32(employeeLogged.Rows[0].ItemArray[0].ToString());
                     TokenWithValidateData tokenObject = tokenRepository.generateToken(employeeId);
 
                     // settando o token e a validade
@@ -165,6 +169,9 @@ namespace folha_de_ponto.views
         private void panelTimesheetController()
         {
 
+            // colocando os itens dentro do combo-box
+            this.buildComboBoxPointType();
+
             // carregar tabela de pontos já realizados hoje
             this.buildTimesheetTable();
 
@@ -172,9 +179,6 @@ namespace folha_de_ponto.views
 
         private void buildTimesheetTable()
         {
-
-            CommonMethods commonMethods = new CommonMethods();
-            TimesheetBLL timesheetRepository = new TimesheetBLL();
 
             if (!commonMethods.tokenIsValidate(token, tokenValidate))
             {
@@ -187,5 +191,37 @@ namespace folha_de_ponto.views
 
         }
 
+        private void buildComboBoxPointType()
+        {
+            comboBoxPointType.Items.Insert(0, "Início de expediente");
+            comboBoxPointType.Items.Insert(1, "Fim de expediente");
+            comboBoxPointType.Items.Insert(2, "Início de almoço");
+            comboBoxPointType.Items.Insert(3, "Fim de almoço");
+            comboBoxPointType.Items.Insert(4, "Início de pausa");
+            comboBoxPointType.Items.Insert(5, "Fim de pausa");
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+            if (comboBoxPointType.SelectedItem == null)
+            {
+                MessageBox.Show("É necessário, primeiro, selecionar um tipo.", "ALERTA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            } else
+            {
+
+                int timesheetTypeId = comboBoxPointType.SelectedIndex + 1;
+
+                TimesheetDTO newTimesheet = new TimesheetDTO();
+                newTimesheet.setTimesheetEmployeeId(employeeId);
+                newTimesheet.setDateTime(DateTime.Now);
+                newTimesheet.setTimesheetTypeId(timesheetTypeId);
+
+                timesheetRepository.setPoint(newTimesheet);
+                this.buildTimesheetTable();
+
+            }
+
+        }
     }
 }

@@ -192,9 +192,12 @@
             // 
             // timesheetTable
             // 
+            this.timesheetTable.AllowUserToAddRows = false;
+            this.timesheetTable.AllowUserToDeleteRows = false;
             this.timesheetTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.timesheetTable.Location = new System.Drawing.Point(388, 81);
             this.timesheetTable.Name = "timesheetTable";
+            this.timesheetTable.ReadOnly = true;
             this.timesheetTable.RowTemplate.Height = 28;
             this.timesheetTable.Size = new System.Drawing.Size(545, 287);
             this.timesheetTable.TabIndex = 4;
@@ -222,6 +225,7 @@
             this.button1.TabIndex = 2;
             this.button1.Text = "Bater";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // labelPointTime
             // 
@@ -235,13 +239,6 @@
             // comboBoxPointType
             // 
             this.comboBoxPointType.FormattingEnabled = true;
-            this.comboBoxPointType.Items.AddRange(new object[] {
-            "inicio expediente",
-            "fim expediente",
-            "inicio almoco",
-            "fim almoco",
-            "inicio pausa",
-            "fim pausa"});
             this.comboBoxPointType.Location = new System.Drawing.Point(23, 116);
             this.comboBoxPointType.Name = "comboBoxPointType";
             this.comboBoxPointType.Size = new System.Drawing.Size(275, 33);

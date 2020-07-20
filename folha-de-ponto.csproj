@@ -99,6 +99,7 @@
     <Compile Include="code\dal\DatabaseAccess.cs" />
     <Compile Include="code\data\TokenWithValidateData.cs" />
     <Compile Include="code\dto\EmployeeDTO.cs" />
+    <Compile Include="code\dto\TimesheetDTO.cs" />
     <Compile Include="code\dto\TokenDTO.cs" />
     <Compile Include="code\utils\CommonMethods.cs" />
     <Compile Include="code\utils\Constants.cs" />

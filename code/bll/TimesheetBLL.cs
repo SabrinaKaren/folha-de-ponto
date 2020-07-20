@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using timesheet;
 using folha_de_ponto.code.utils;
+using folha_de_ponto.code.dto;
 
 namespace folha_de_ponto.code.bll
 {
@@ -45,6 +46,24 @@ namespace folha_de_ponto.code.bll
             }
 
             return sqlReturn;
+
+        }
+
+        public void setPoint(TimesheetDTO timesheetObject)
+        {
+
+            string dateTimeInString = commonMethods.convertDateTimeInDbFormatString(timesheetObject.getDateTime());
+
+            try
+            {
+                db.connect();
+                string sql = "INSERT INTO timesheet (timesheet_id, timesheet_employee_id, dateTime, timesheet_type_id) VALUES (NULL, " + timesheetObject.getTimesheetEmployeeId() + ", '" + dateTimeInString + "', " + timesheetObject.getTimesheetTypeId() + ");";
+                db.executeSql(sql);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao tentar inserir o token: " + ex.Message.ToString());
+            }
 
         }
 
