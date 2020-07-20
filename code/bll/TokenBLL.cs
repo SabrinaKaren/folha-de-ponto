@@ -88,7 +88,7 @@ namespace timesheet.database.selectCollections
             try
             {
                 db.connect();
-                string sql = "UPDATE token SET token = '" + tokenObj.getToken() + "', begin = '" + beginDateTimeInString + "', validate = '" + validateDateTimeInString + "' WHERE token_id = '" + tokenObj.getTokenId() + "';";
+                string sql = "UPDATE token SET token = '" + tokenObj.getToken() + "', begin = '" + beginDateTimeInString + "', validate = '" + validateDateTimeInString + "' WHERE token_employee_id = " + tokenObj.getTokenId() + ";";
                 db.executeSql(sql);
             }
             catch (Exception ex)
